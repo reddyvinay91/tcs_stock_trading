@@ -59,3 +59,36 @@ print(f"Number of Trades: {num_trades}")
 print(f"Winning Trades (%): {winning_trades / num_trades * 100:.2f}%")
 print(f"Losing Trades (%): {losing_trades / num_trades * 100:.2f}%")
 print(f"Maximum Drawdown: ₹{max_drawdown:.2f}")
+
+
+# Plot the closing price and SMAs
+plt.figure(figsize=(12, 6))
+plt.plot(data['Close'], label='Close Price')
+plt.plot(data['SMA_20'], label='20-Day SMA')
+plt.plot(data['SMA_50'], label='50-Day SMA')
+plt.title(f'{stock_symbol} Stock Price and SMA Crossover Strategy')
+plt.legend()
+plt.show()
+
+# Plot the equity curve
+plt.figure(figsize=(12, 6))
+plt.plot(strategy['Equity Curve'], label='Equity Curve')
+plt.title(f'{stock_symbol} Equity Curve')
+plt.legend()
+plt.show()
+
+# Generate a brief report
+report = f"""
+**Strategy Performance Report**
+
+- **Total Returns:** ₹{total_returns:.2f}
+- **Number of Trades:** {num_trades}
+- **Winning Trades (%):** {winning_trades / num_trades * 100:.2f}%
+- **Losing Trades (%):** {losing_trades / num_trades * 100:.2f}%
+- **Maximum Drawdown:** ₹{max_drawdown:.2f}
+
+**Observations:**
+The strategy's effectiveness can be observed through the equity curve, showing how well it performed over the selected period.
+"""
+
+print(report)
